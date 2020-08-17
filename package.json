@@ -1,0 +1,24 @@
+{
+  "name": "docker-go-protoc-ts",
+  "version": "1.0.0",
+  "description": "installs ts-protoc-gen",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "ts-protoc-gen": "^0.12.0"
+  },
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/basvanbeek/docker-go-protoc.git"
+  },
+  "author": "Bas van Beek <bas@tobin.nl>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/basvanbeek/docker-go-protoc/issues"
+  },
+  "homepage": "https://github.com/basvanbeek/docker-go-protoc#readme"
+}
