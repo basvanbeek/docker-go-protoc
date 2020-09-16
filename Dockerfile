@@ -5,7 +5,7 @@ FROM golang:$GO_VERSION
 
 ARG PB_VERSION
 
-RUN apt-get update && apt-get install -y build-essential unzip npm
+RUN apt-get update && apt-get install -y build-essential unzip zip npm
 
 RUN curl -L https://github.com/protocolbuffers/protobuf/releases/download/v${PB_VERSION}/protoc-${PB_VERSION}-linux-x86_64.zip \
     -o /tmp/protoc.zip && \
