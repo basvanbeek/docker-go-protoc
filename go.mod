@@ -1,6 +1,6 @@
 module github.com/basvanbeek/docker-go-protoc
 
-go 1.14
+go 1.16
 
 require (
 	github.com/golang/protobuf v1.4.2 // indirect
