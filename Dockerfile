@@ -12,17 +12,20 @@ RUN curl -L https://github.com/protocolbuffers/protobuf/releases/download/v${PB_
     unzip /tmp/protoc.zip -d /usr/local && \
     rm /tmp/protoc.zip && rm /usr/local/readme.txt
 
-RUN git clone https://github.com/envoyproxy/protoc-gen-validate /tmp/protoc-gen-validate && \
-    cd /tmp/protoc-gen-validate && make build && rm -rf /tmp/protoc-gen-validate
-
 WORKDIR /go/src/app
 COPY . /go/src/app
 
 RUN npm install
 RUN go mod download
+RUN go get -d github.com/envoyproxy/protoc-gen-validate
 RUN go install \
         github.com/rakyll/statik \
         google.golang.org/protobuf/cmd/protoc-gen-go \
         google.golang.org/grpc/cmd/protoc-gen-go-grpc \
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+
+RUN git clone https://github.com/envoyproxy/protoc-gen-validate /tmp/protoc-gen-validate && \
+    cd /tmp/protoc-gen-validate && make build && rm -rf /tmp/protoc-gen-validate
+
+
