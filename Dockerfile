@@ -1,4 +1,4 @@
-ARG GO_VERSION=1.15
+ARG GO_VERSION=1.20
 ARG PB_VERSION=3.13.0
 
 FROM golang:$GO_VERSION
@@ -21,6 +21,7 @@ COPY . /go/src/app
 RUN npm install
 RUN go mod download
 RUN go install \
+        github.com/basvanbeek/grpc-transcoder \
         github.com/rakyll/statik \
         google.golang.org/protobuf/cmd/protoc-gen-go \
         google.golang.org/grpc/cmd/protoc-gen-go-grpc \
