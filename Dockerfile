@@ -1,4 +1,4 @@
-ARG GO_VERSION=1.19
+ARG GO_VERSION=1.20
 ARG PB_VERSION=3.15.8
 
 FROM golang:$GO_VERSION
@@ -27,5 +27,3 @@ RUN go install \
 
 RUN git clone https://github.com/envoyproxy/protoc-gen-validate /tmp/protoc-gen-validate && \
     cd /tmp/protoc-gen-validate && make build && rm -rf /tmp/protoc-gen-validate
-
-
