@@ -1,5 +1,5 @@
-ARG GO_VERSION=1.20
-ARG PB_VERSION=3.15.8
+ARG GO_VERSION=1.22
+ARG PB_VERSION=25.3
 
 FROM golang:$GO_VERSION
 
@@ -16,14 +16,13 @@ WORKDIR /go/src/app
 COPY . /go/src/app
 
 RUN npm install
-RUN go mod download
-RUN go get -d github.com/envoyproxy/protoc-gen-validate
-RUN go install \
-        github.com/rakyll/statik \
-        google.golang.org/protobuf/cmd/protoc-gen-go \
-        google.golang.org/grpc/cmd/protoc-gen-go-grpc \
-        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
-        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
+
+RUN \
+    go install github.com/rakyll/statik@v0.1.7 && \
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.32.0 && \
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.3.0 && \
+    go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v1.16.0 && \
+    go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v1.16.0
 
 RUN git clone https://github.com/envoyproxy/protoc-gen-validate /tmp/protoc-gen-validate && \
     cd /tmp/protoc-gen-validate && make build && rm -rf /tmp/protoc-gen-validate
