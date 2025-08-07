@@ -1,5 +1,5 @@
-ARG GO_VERSION=1.24.1
-ARG PB_VERSION=30.1
+ARG GO_VERSION=1.24.6
+ARG PB_VERSION=31.1
 
 FROM golang:$GO_VERSION
 
@@ -19,7 +19,7 @@ RUN npm install
 
 RUN \
     go install github.com/rakyll/statik@v0.1.7 && \
-    go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.5 && \
+    go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.6 && \
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.5.1 && \
     go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway@v1.16.0 && \
     go install github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger@v1.16.0
